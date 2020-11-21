@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: "dashboard#show"
   resources :patients
-  root to: "patients#index"
+  devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
 end

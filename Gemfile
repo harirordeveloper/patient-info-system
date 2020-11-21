@@ -48,3 +48,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rspec-rails'
 gem 'annotate', '~> 3.1', '>= 3.1.1'
 gem 'friendly_id', '~> 5.4.0'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
