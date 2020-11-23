@@ -1,0 +1,4 @@
+<%= form_tag("/bulk_upload", :method => "post",  multipart: true) do %>
+  <%= file_field_tag :patient_records, multiple: false %>
+  <%= submit_tag("Upload Patients") %>
+<% end %>

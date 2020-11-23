@@ -2,13 +2,16 @@
   "name": "patient_info_sys",
   "private": true,
   "dependencies": {
+    "@nathanvda/cocoon": "^1.2.14",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
     "bootstrap": "^4.5.3",
+    "datatables.net-dt": "^1.10.22",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
+    "rails-datatables": "^1.0.6",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",

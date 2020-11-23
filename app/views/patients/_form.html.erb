@@ -1,0 +1,62 @@
+<%= form_with(model: patient, local: true) do |form| %>
+  <% if patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+      <ul>
+        <% patient.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group row">
+    <%= form.label :name, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-7">
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+ </div>
+
+  <div class="form-group row">
+    <%= form.label :email, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-7">
+      <%= form.text_field :email, class: "form-control" %>
+    </div>
+ </div>
+
+
+  <div class="form-group row">
+    <%= form.label :gender, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-7">
+      <%= form.select :gender, Patient.genders.keys.map {|frequency| [frequency.titleize]}, include_blank: true, class: "form-control" %>
+    </div>
+ </div>
+
+  <div class="form-group row">
+    <%= form.label :dob, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-7">
+      <%= form.date_select :dob, class: "form-control" %>
+    </div>
+ </div>
+
+<div class="form-group row">
+    <%= form.label :marital_status, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-7">
+      <%= form.select :marital_status, Patient.marital_statuses.keys.map {|status| [status.humanize.capitalize]}, include_blank: true, class: "form-control" %>
+    </div>
+ </div>
+
+  <div class="field">
+    <%= form.label :medical_records %>
+    <% form.object.medical_records.each do |med_record| %>
+      <%= link_to med_record.filename, medical_record_patient_url(med_record.signed_id),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    <%= form.file_field :medical_records, multiple: true %>
+  </div>
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

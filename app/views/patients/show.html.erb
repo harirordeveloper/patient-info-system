@@ -1,0 +1,19 @@
+<div class="card text-left">
+  <div class="card-header text-center">
+    <%= @patient.name %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Details</h5>
+    <p class="card-text">Email : <%= @patient.email %></p>
+    <p class="card-text">Marital status : <%= @patient.marital_status %></p>
+    <p class="card-text">Gender : <%= @patient.gender %></p>
+    <p class="card-text">DOB : <%= @patient.dob %></p>
+    <%= link_to 'Edit', edit_patient_path(@patient), class: "btn btn-primary" %>
+  </div>
+  <div class="card-footer text-muted text-center">
+    <p>Medical records </p>
+    <% @patient.medical_records.each do |med_record|%>
+    <%= link_to med_record.filename, rails_blob_path(med_record, disposition: 'attachment') %>
+  <% end %>
+  </div>
+</div>
